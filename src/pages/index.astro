@@ -1,0 +1,417 @@
+---
+import '../styles/global.css';
+
+const articles = [
+  {
+    title: "Apprendre les métiers de la restauration, au château, à l'école hôtelière Renouveau",
+    date: "14 janvier 2026",
+    category: "Enseignement professionnel",
+    categoryColor: "bg-amber-100 text-amber-800",
+    excerpt: "L'hôtellerie restauration connait aujourd'hui un véritable essor. Ce secteur représente un métier d'avenir pour les jeunes...",
+    gradient: "from-amber-800 to-amber-600",
+  },
+  {
+    title: "Lycée Saint Augustin, le parcours orientation",
+    date: "15 janvier 2026",
+    category: "Lycée",
+    categoryColor: "bg-blue-100 text-blue-800",
+    excerpt: "Pour une jeunesse heureuse, libre et responsable. Le lycée est une période clef dans la construction de la jeunesse...",
+    gradient: "from-blue-900 to-blue-700",
+  },
+  {
+    title: "Une section internationale britannique à Lyon",
+    date: "15 janvier 2026",
+    category: "Collège",
+    categoryColor: "bg-emerald-100 text-emerald-800",
+    excerpt: "École-collège-lycée Bellevue : suivre ses études dans la section internationale britannique à Lyon...",
+    gradient: "from-emerald-800 to-emerald-600",
+  },
+];
+
+const etablissements = [
+  { name: "École La Mache", city: "Lyon", dept: "69", type: "Lycée Pro + BTS", icon: "🔧" },
+  { name: "École de Production Don Bosco", city: "Lyon", dept: "69", type: "Production", icon: "⚙️" },
+  { name: "Lycée Don Bosco", city: "Lyon", dept: "69", type: "Lycée", icon: "🎓" },
+  { name: "École Technique du Bois", city: "Cormaranche", dept: "01", type: "Production", icon: "🪵" },
+];
+
+const events = [
+  { name: "Portes ouvertes Collège Sainte-Marie", date: "25 jan. 2026", time: "9h — 13h", lieu: "" },
+  { name: "Portes ouvertes Lycée Sainte-Claire", lieu: "Sury-le-Comtal", date: "1 fév. 2026", time: "9h — 16h" },
+  { name: "Portes ouvertes SANDAR", lieu: "Limonest", date: "1 fév. 2026", time: "9h — 17h" },
+  { name: "Portes ouvertes LP Saint-Joseph Garibaldi", date: "8 fév. 2026", time: "9h — 12h", lieu: "" },
+];
+
+const categories = [
+  { name: "Collège", count: 24, icon: "📘" },
+  { name: "Lycée", count: 38, icon: "📗" },
+  { name: "Supérieur", count: 31, icon: "📕" },
+  { name: "Professionnel", count: 27, icon: "📙" },
+  { name: "Construire sa vie", count: 18, icon: "🧭" },
+  { name: "Métiers", count: 15, icon: "💼" },
+];
+---
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guide Orientation — Le Guide de l'Enseignement Privé</title>
+  <meta name="description" content="Le guide de référence de l'enseignement privé en Rhône-Alpes. Annuaire, articles, événements portes ouvertes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+</head>
+<body class="antialiased">
+
+  <!-- HEADER -->
+  <header class="border-b border-border bg-card sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <div>
+            <div class="font-heading text-lg sm:text-xl font-bold text-primary leading-tight">Guide Orientation</div>
+            <div class="text-[10px] sm:text-xs text-muted-foreground tracking-wide uppercase">Le Guide de l'Enseignement Privé</div>
+          </div>
+        </div>
+        <nav class="hidden lg:flex items-center gap-1">
+          {["Accueil", "À la Une", "Annuaire", "Collège", "Lycée", "Supérieur", "Enseignement Pro"].map((item) => (
+            <a href="#" class="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-lg hover:bg-primary/5">{item}</a>
+          ))}
+        </nav>
+        <button class="lg:hidden p-2 text-foreground/70">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary via-primary-light to-primary py-20 sm:py-28 lg:py-36">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-1.5 rounded-full mb-8">
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        <span class="text-sm text-white/90 font-medium">Édition 2026 disponible</span>
+      </div>
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        Trouvez la formation qui révèle <span class="italic text-accent-light">le potentiel</span> de votre enfant
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+        Le guide de référence de l'enseignement privé en Rhône-Alpes — Annuaire, articles, événements portes ouvertes
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#annuaire" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-primary font-semibold px-8 py-3.5 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-accent/25">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          Explorer l'annuaire
+        </a>
+        <a href="#articles" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-8 py-3.5 rounded-xl border border-white/20 transition-all hover:-translate-y-0.5">
+          Articles à la une
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+      <div class="mt-14 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-white">200+</div>
+          <div class="text-xs sm:text-sm text-white/60 mt-1">Établissements</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-white">4</div>
+          <div class="text-xs sm:text-sm text-white/60 mt-1">Départements</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-white">12</div>
+          <div class="text-xs sm:text-sm text-white/60 mt-1">Ans d'édition</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="py-12 bg-card border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {categories.map((cat) => (
+          <a href="#" class="group flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 hover:bg-primary/5 transition-all">
+            <span class="text-2xl">{cat.icon}</span>
+            <div>
+              <div class="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{cat.name}</div>
+              <div class="text-xs text-muted-foreground">{cat.count} articles</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES À LA UNE -->
+  <section id="articles" class="py-16 sm:py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <span class="text-sm font-semibold text-accent uppercase tracking-wider">À la une</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-2">Articles récents</h2>
+        </div>
+        <a href="#" class="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary-light transition-colors">
+          Tous les articles
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {articles.map((article) => (
+          <article class="group bg-card rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
+            <div class={`h-48 bg-gradient-to-br ${article.gradient} relative overflow-hidden`}>
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span class={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${article.categoryColor}`}>
+                  {article.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <time class="text-xs text-muted-foreground">{article.date}</time>
+              <h3 class="font-heading text-lg font-bold text-foreground mt-2 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                {article.title}
+              </h3>
+              <p class="text-sm text-muted-foreground mt-3 leading-relaxed line-clamp-2">{article.excerpt}</p>
+              <div class="mt-4 flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                Lire la suite
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNUAIRE -->
+  <section id="annuaire" class="py-16 sm:py-24 bg-muted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Annuaire</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-2">200+ établissements en Rhône-Alpes</h2>
+        <p class="text-muted-foreground mt-3 max-w-xl mx-auto">Trouvez l'établissement idéal parmi les écoles, collèges, lycées et formations supérieures de la région.</p>
+      </div>
+
+      <!-- Filtres -->
+      <div class="bg-card rounded-2xl border border-border p-4 sm:p-6 mb-8 shadow-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Type d'établissement</label>
+            <div class="flex flex-wrap gap-2">
+              {["Collège", "Lycée", "Supérieur", "Professionnel"].map((type, i) => (
+                <button class={`px-3 py-1.5 text-sm font-medium rounded-lg border transition-all ${i === 1 ? 'bg-primary text-white border-primary' : 'border-border text-foreground/70 hover:border-primary/30 hover:bg-primary/5'}`}>
+                  {type}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Département</label>
+            <div class="flex flex-wrap gap-2">
+              {["Ain (01)", "Rhône (69)", "Isère (38)", "Loire (42)"].map((dept, i) => (
+                <button class={`px-3 py-1.5 text-sm font-medium rounded-lg border transition-all ${i === 1 ? 'bg-primary text-white border-primary' : 'border-border text-foreground/70 hover:border-primary/30 hover:bg-primary/5'}`}>
+                  {dept}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Recherche</label>
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input type="text" placeholder="Nom de l'établissement..." class="w-full pl-10 pr-4 py-2 text-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards établissements -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {etablissements.map((etab) => (
+          <a href="#" class="group bg-card rounded-xl border border-border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20">
+            <div class="flex items-start gap-3">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-2xl shrink-0">
+                {etab.icon}
+              </div>
+              <div class="min-w-0">
+                <h3 class="font-semibold text-foreground text-sm leading-tight group-hover:text-primary transition-colors">{etab.name}</h3>
+                <p class="text-xs text-muted-foreground mt-1">{etab.city} ({etab.dept})</p>
+                <span class="inline-block mt-2 text-[10px] font-semibold uppercase tracking-wider text-accent bg-accent/10 px-2 py-0.5 rounded-md">
+                  {etab.type}
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="#" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-semibold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20">
+          Voir tous les établissements
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENEMENTS PORTES OUVERTES -->
+  <section class="py-16 sm:py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <span class="text-sm font-semibold text-accent uppercase tracking-wider">Événements</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-2">Prochaines portes ouvertes</h2>
+          <p class="text-muted-foreground mt-4 leading-relaxed">
+            Rencontrez les équipes pédagogiques, visitez les locaux et découvrez les formations lors des journées portes ouvertes.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-light transition-colors mt-6">
+            Voir tous les événements
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="lg:col-span-3 space-y-3">
+          {events.map((event) => (
+            <a href="#" class="group flex items-center gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/20 hover:shadow-md transition-all">
+              <div class="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex flex-col items-center justify-center">
+                <span class="text-xs font-bold text-primary leading-none">{event.date.split(' ')[0]}</span>
+                <span class="text-[10px] text-primary/70 uppercase">{event.date.split(' ')[1]}</span>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="font-semibold text-sm text-foreground group-hover:text-primary transition-colors truncate">{event.name}</h3>
+                <div class="flex items-center gap-3 mt-1">
+                  {event.lieu && (
+                    <span class="text-xs text-muted-foreground flex items-center gap-1">
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      {event.lieu}
+                    </span>
+                  )}
+                  <span class="text-xs text-muted-foreground flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {event.time}
+                  </span>
+                </div>
+              </div>
+              <svg class="w-5 h-5 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITO / CITATION -->
+  <section class="py-16 sm:py-24 bg-gradient-to-br from-primary via-primary-light to-primary relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <svg class="w-12 h-12 text-white/20 mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" />
+      </svg>
+      <blockquote class="font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-relaxed italic">
+        "Le meilleur parcours, c'est celui qui lui convient, celui qui révèle ses capacités et suscite sa motivation, un élan pour démarrer dans la vie."
+      </blockquote>
+      <div class="mt-8">
+        <div class="font-semibold text-white text-lg">Régine Caupin</div>
+        <div class="text-sm text-white/60 mt-1">Éditrice — Guide Orientation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER / CTA -->
+  <section class="py-16 sm:py-20 bg-muted">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-heading text-2xl sm:text-3xl font-bold text-foreground">Restez informé</h2>
+      <p class="text-muted-foreground mt-3">Recevez les prochaines dates de portes ouvertes et nos articles directement dans votre boîte mail.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" placeholder="votre@email.fr" class="flex-1 px-4 py-3 text-sm border border-border rounded-xl bg-card focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40" />
+        <button class="bg-primary hover:bg-primary-light text-white font-semibold px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 shadow-lg shadow-primary/20">
+          S'inscrire
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white/70 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+              </svg>
+            </div>
+            <div class="font-heading text-lg font-bold text-white">Guide Orientation</div>
+          </div>
+          <p class="text-sm leading-relaxed">Le guide de référence de l'enseignement privé en Rhône-Alpes depuis 2014.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Rubriques</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">À la Une</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Construire sa vie</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Enseignement privé</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Enseignement professionnel</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Niveaux</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Collège</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Lycée</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Enseignement supérieur</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Annuaire</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Nous contacter</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Mentions légales</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Politique de confidentialité</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-10 pt-8 text-center text-xs text-white/40">
+        © 2026 Guide Orientation — Le Guide de l'Enseignement Privé. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
