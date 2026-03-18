@@ -9,6 +9,7 @@ const articles = [
     categoryColor: "bg-amber-100 text-amber-800",
     excerpt: "L'hôtellerie restauration connait aujourd'hui un véritable essor. Ce secteur représente un métier d'avenir pour les jeunes...",
     gradient: "from-amber-800 to-amber-600",
+    image: "https://guide-orientation.org/wp-content/uploads/2026/01/image001-2.png",
   },
   {
     title: "Lycée Saint Augustin, le parcours orientation",
@@ -17,6 +18,7 @@ const articles = [
     categoryColor: "bg-blue-100 text-blue-800",
     excerpt: "Pour une jeunesse heureuse, libre et responsable. Le lycée est une période clef dans la construction de la jeunesse...",
     gradient: "from-blue-900 to-blue-700",
+    image: "https://guide-orientation.org/wp-content/uploads/2026/01/IMG_1857-copie-scaled.jpg",
   },
   {
     title: "Une section internationale britannique à Lyon",
@@ -25,6 +27,7 @@ const articles = [
     categoryColor: "bg-emerald-100 text-emerald-800",
     excerpt: "École-collège-lycée Bellevue : suivre ses études dans la section internationale britannique à Lyon...",
     gradient: "from-emerald-800 to-emerald-600",
+    image: "https://guide-orientation.org/wp-content/uploads/2026/01/photo-bellevue-intl.png",
   },
 ];
 
@@ -176,8 +179,9 @@ const categories = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {articles.map((article) => (
           <article class="group bg-card rounded-2xl border border-border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
-            <div class={`h-48 bg-gradient-to-br ${article.gradient} relative overflow-hidden`}>
-              <div class="absolute inset-0 bg-black/10"></div>
+            <div class="h-48 relative overflow-hidden">
+              <img src={article.image} alt={article.title} class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4">
                 <span class={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${article.categoryColor}`}>
                   {article.category}
